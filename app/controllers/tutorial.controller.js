@@ -82,6 +82,20 @@ exports.update = (req, res) => {
     });
 };
 
+//Deletes all tutorials.
+exports.deleteAll = (req, res) => {
+    Tutorial.deleteMany({})
+    .then(data => {
+        res.send({
+            message: `${data.deletedCount} Tutorials were successfully deleted.`
+        });
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Error occured when deleting all tutorials."
+        });
+    });
+};
+
 //Deletes a single/One tutorial.
 exports.delete = (req, res) => {
     const id = req.params.id;
@@ -100,20 +114,6 @@ exports.delete = (req, res) => {
     }).catch(err => {
         res.status(500).send({
             message: "Error while deleting tutorial with id " + id
-        });
-    });
-};
-
-//Deletes all tutorials.
-exports.deleteAll = (req, res) => {
-    Tutorial.deleteMany({})
-    .then(data => {
-        res.send({
-            message: `${data.deletedCount} Tutorials were successfully deleted.`
-        });
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Error occured when deleting all tutorials."
         });
     });
 };

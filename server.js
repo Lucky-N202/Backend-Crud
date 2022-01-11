@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 const db = require("./app/models");
 
 const dbConfig = require("./config/db.config.js");
+
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
@@ -31,7 +32,7 @@ db.mongoose
   });
 
 var corsOptions = {
-    origin: "https://localhost:8081"
+    origin: "https://localhost:4200"
 };
 
 app.get("/", (req, res) => {

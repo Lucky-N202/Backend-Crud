@@ -1,5 +1,3 @@
-// const { Schema } = require("mongoose");
-
 module.exports = mongoose => {
   var schema = mongoose.Schema(
     {
@@ -9,17 +7,6 @@ module.exports = mongoose => {
     },
     { timestamps: true }
   )
-    // const Tutorial = mongoose.model(
-    //   "tutorial",
-    //   mongoose.Schema(
-    //     {
-    //       title: String,
-    //       description: String,
-    //       published: Boolean
-    //     },
-    //     { timestamps: true }
-    //   )
-    // );
 
     schema.method("toJSON", function(){
       const { __v, _id, ...object } = this.toObject();
